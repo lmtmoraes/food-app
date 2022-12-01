@@ -44,14 +44,19 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
     def lifecycle_version = "2.4.0-rc01"
     // ViewModel
+    //noinspection GradleDependency
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData
+    //noinspection GradleDependency
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     //Lib Glide
@@ -73,7 +78,9 @@ dependencies {
 
     // LiveCycle Dependencies
     def Livecycle_version = "2.4.1"
+    //noinspection GradleDependency
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$Livecycle_version"
+    //noinspection GradleDependency
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$Livecycle_version"
 
     // Interceptor
