@@ -2,6 +2,9 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="182dp"
     android:layout_height="215dp"
+    android:layout_marginEnd="6dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginBottom="24dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="24dp">
@@ -31,7 +34,6 @@
             android:textSize="16sp"
             android:textColor="@color/red"
             tools:text="Acocado Salad"
-            app:layout_constraintBottom_toBottomOf=""
             app:layout_constraintTop_toBottomOf="@id/food_img" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -98,6 +100,7 @@
             tools:ignore="SmallSp" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/time_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="@id/likes_txt"
