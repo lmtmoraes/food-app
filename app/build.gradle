@@ -87,6 +87,9 @@ dependencies {
     def Interceptor_version = "4.7.2"
     implementation "com.squareup.okhttp3:logging-interceptor:$Interceptor_version"
 
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
+
     //user permission
     implementation 'com.karumi:dexter:6.2.3'
 
