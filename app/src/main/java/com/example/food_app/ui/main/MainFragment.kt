@@ -14,7 +14,7 @@ class MainFragment : Fragment() {
 
     private var binding: FragmentMainBinding? = null
     private val foodAdapter by lazy { FoodAdapter() }
-    private lateinit var viewModel: FoodViewModel
+    private lateinit var viewModel: RecipesViewModel
 
 
     override fun onCreateView(
@@ -26,7 +26,7 @@ class MainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = ViewModelProvider(requireActivity())[FoodViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[RecipesViewModel::class.java]
         initList()
     }
 

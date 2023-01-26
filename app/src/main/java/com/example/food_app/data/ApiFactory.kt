@@ -12,5 +12,8 @@ object ApiFactory {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+    fun <T> create(serviceClass: Class<T>): T{
+        return retrofit().create(serviceClass)
+    }
 
 }
