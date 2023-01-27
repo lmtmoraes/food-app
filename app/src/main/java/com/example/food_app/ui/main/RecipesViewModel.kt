@@ -15,7 +15,7 @@ class RecipesViewModel(private val randomRecipeUseCase: RandomRecipeUseCase) : V
 
     private val _randomRecipesLiveData = MutableStateFlow<Resource<RandomRecipesResponse>>(Loading())
     val randomRecipesLiveData: StateFlow<Resource<RandomRecipesResponse>>
-        get() = randomRecipesLiveData
+        get() = _randomRecipesLiveData
 
 
     fun getRandomRecipes(apiKey: String, number: String){

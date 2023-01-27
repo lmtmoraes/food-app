@@ -1,121 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="182dp"
-    android:layout_height="215dp"
-    android:layout_marginEnd="6dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginBottom="24dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/random_list_card"
+    android:layout_width="182dp"
+    android:layout_height="215dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="6dp"
+    android:layout_marginBottom="24dp"
     app:cardCornerRadius="24dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/food_card"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/light_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/food_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="10dp"
-            tools:src="@drawable/salad"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/salad" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/food_name_txt"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:ellipsize="marquee"
+            android:fontFamily="@font/roboto_bold"
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:textSize="16sp"
+            android:singleLine="true"
             android:textAlignment="center"
             android:textColor="@color/red"
-            tools:text="Acocado Salad"
-            app:layout_constraintTop_toBottomOf="@id/food_img" />
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@id/serving_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Acocado Salad" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/serving_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/food_name_txt"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/ic_room_service"
-            app:layout_constraintHorizontal_chainStyle="packed"
             android:layout_marginStart="10dp"
+            android:src="@drawable/ic_room_service"
+            app:layout_constraintBottom_toTopOf="@id/serving_txt"
             app:layout_constraintEnd_toStartOf="@id/like_img"
-            />
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/like_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/serving_img"
-            app:layout_constraintBottom_toBottomOf="@id/serving_img"
-            app:layout_constraintStart_toEndOf="@id/serving_img"
             android:layout_marginStart="35dp"
-            app:layout_constraintEnd_toStartOf="@id/time_img"
             android:src="@drawable/ic_heart"
-            />
+            app:layout_constraintBottom_toBottomOf="@id/serving_img"
+            app:layout_constraintEnd_toStartOf="@id/time_img"
+            app:layout_constraintStart_toEndOf="@id/serving_img"
+            app:layout_constraintTop_toTopOf="@id/serving_img" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/time_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/like_img"
-            app:layout_constraintStart_toEndOf="@id/like_img"
             android:layout_marginStart="35dp"
-            app:layout_constraintBottom_toBottomOf="@id/like_img"
             android:src="@drawable/ic_clock"
+            app:layout_constraintBottom_toBottomOf="@id/like_img"
             app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintStart_toEndOf="@id/like_img"
+            app:layout_constraintTop_toTopOf="@id/like_img" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/serving_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/serving_img"
-            app:layout_constraintStart_toStartOf="@id/serving_img"
-            app:layout_constraintEnd_toEndOf="@id/serving_img"
-            android:textSize="8sp"
+
+            android:layout_marginBottom="15dp"
             android:fontFamily="@font/roboto_bold"
             android:textColor="@color/black"
-            tools:text="112 pedidos"
-            tools:ignore="SmallSp" />
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/serving_img"
+            app:layout_constraintStart_toStartOf="@id/serving_img"
+            tools:ignore="SmallSp"
+            tools:text="112 pedidos" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/likes_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/serving_txt"
-            app:layout_constraintStart_toStartOf="@id/like_img"
-            app:layout_constraintEnd_toEndOf="@id/like_img"
+            android:fontFamily="@font/roboto_bold"
             android:textColor="@color/black"
             android:textSize="8sp"
-            android:fontFamily="@font/roboto_bold"
-            tools:text="47 curtidas"
-            tools:ignore="SmallSp" />
+            app:layout_constraintEnd_toEndOf="@id/like_img"
+            app:layout_constraintStart_toStartOf="@id/like_img"
+            app:layout_constraintTop_toTopOf="@id/serving_txt"
+            tools:ignore="SmallSp"
+            tools:text="47 curtidas" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/time_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/likes_txt"
-            app:layout_constraintStart_toStartOf="@id/time_img"
-            app:layout_constraintEnd_toEndOf="@id/time_img"
-            tools:text="60 min"
-            android:textColor="@color/black"
             android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
             android:textSize="8sp"
-            tools:ignore="SmallSp" />
-
+            app:layout_constraintEnd_toEndOf="@id/time_img"
+            app:layout_constraintStart_toStartOf="@id/time_img"
+            app:layout_constraintTop_toTopOf="@id/likes_txt"
+            tools:ignore="SmallSp"
+            tools:text="60 min" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

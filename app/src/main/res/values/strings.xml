@@ -4,4 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="find_your_food">Find Your\nFood</string>
     <string name="buscar">Buscar</string>
+    <string name="error">Erro ao carregar</string>
+    <string name="connection_error">Sem conexão</string>
 </resources>

@@ -5,11 +5,11 @@ import com.google.gson.reflect.TypeToken
 import retrofit2.HttpException
 
 fun Throwable.errorApi(): String{
-    val message = (this as? HttpException)
+    val message = (this as? HttpException) ?: return "Sem conexão"
     val type = object : TypeToken<ErrorModel>() {}.type
-    val errorModel: ErrorModel? = Gson().fromJson(message?.response()?.errorBody()?.charStream(), type)
+    val errorModel: ErrorModel? = Gson().fromJson(message.response()?.errorBody()?.charStream(), type)
     val errorMessage = errorModel?.let {
         it.error.toString()
-    } ?: kotlin.run { "Erro no servidor!" }
-    return errorMessage
+    }
+    return errorMessage!!
 }
