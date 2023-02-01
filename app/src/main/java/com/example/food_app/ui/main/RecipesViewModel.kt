@@ -18,9 +18,9 @@ class RecipesViewModel(private val randomRecipeUseCase: RandomRecipeUseCase) : V
         get() = _randomRecipesLiveData
 
 
-    fun getRandomRecipes(apiKey: String, number: String){
+    fun getRandomRecipes(apiKey: String, number: String, tags: List<String>){
         viewModelScope.launch {
-            randomRecipeUseCase.executeGetRandomRecipes(apiKey, number)
+            randomRecipeUseCase.executeGetRandomRecipes(apiKey, number, tags)
                 .onStart {
                     _randomRecipesLiveData.value = Loading()
                 }

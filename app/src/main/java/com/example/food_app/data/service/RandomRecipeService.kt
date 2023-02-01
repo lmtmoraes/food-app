@@ -7,7 +7,7 @@ import retrofit2.http.Query
 interface RandomRecipeService {
 
     @GET("recipes/random")
-    suspend fun getRandomRecipes(@Query("apiKey") apiKey: String, @Query("number") number: String) : RandomRecipesResponse
+    suspend fun getRandomRecipes(@Query("apiKey") apiKey: String, @Query("number") number: String, @Query("tags") tags: List<String>) : RandomRecipesResponse
 
 
 }

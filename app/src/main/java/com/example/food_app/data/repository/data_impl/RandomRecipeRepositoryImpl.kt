@@ -11,10 +11,11 @@ class RandomRecipeRepositoryImpl(private val randomRecipeService: RandomRecipeSe
 
     override suspend fun getRandomRecipes(
         apiKey: String,
-        number: String
+        number: String,
+        tags: List<String>
     ) = flow {
         coroutineScope {
-            val response = randomRecipeService.getRandomRecipes(apiKey, number)
+            val response = randomRecipeService.getRandomRecipes(apiKey, number, tags)
             emit(response)
         }
     }

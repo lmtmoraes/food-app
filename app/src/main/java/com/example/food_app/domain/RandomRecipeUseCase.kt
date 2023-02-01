@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 
 class RandomRecipeUseCase(private val randomRecipeRepository: RandomRecipeRepository) {
 
-    suspend fun executeGetRandomRecipes(apiKey: String, number: String) : Flow<RandomRecipesResponse> {
-        return randomRecipeRepository.getRandomRecipes(apiKey, number)
+    suspend fun executeGetRandomRecipes(apiKey: String, number: String, tags: List<String>) : Flow<RandomRecipesResponse> {
+        return randomRecipeRepository.getRandomRecipes(apiKey, number, tags)
     }
 
 }

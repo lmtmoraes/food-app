@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface RandomRecipeRepository {
 
-    suspend fun getRandomRecipes(apiKey: String, number: String) : Flow<RandomRecipesResponse>
+    suspend fun getRandomRecipes(apiKey: String, number: String, tags: List<String>) : Flow<RandomRecipesResponse>
 
 
 }

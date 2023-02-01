@@ -36,6 +36,10 @@ class RandomRecipesAdapter() : RecyclerView.Adapter<RandomRecipesAdapter.ViewHol
         Picasso.get().load(mList[position].image).into(binding.foodImg)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     override fun getItemCount(): Int {
         return mList.size
     }
