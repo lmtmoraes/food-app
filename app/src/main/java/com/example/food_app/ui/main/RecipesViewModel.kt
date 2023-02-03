@@ -2,8 +2,6 @@ package com.example.food_app.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.food_app.R
-import com.example.food_app.data.model.FoodResponse
 import com.example.food_app.data.response.RandomRecipesResponse
 import com.example.food_app.domain.RandomRecipeUseCase
 import com.example.food_app.utils.*

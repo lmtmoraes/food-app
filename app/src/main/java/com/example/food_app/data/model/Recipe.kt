@@ -56,7 +56,7 @@ data class Recipe(
     @SerializedName("sourceUrl")
     val sourceUrl: String,
     @SerializedName("image")
-    val image: String,
+    val image: String?,
     @SerializedName("imageType")
     val imageType: String,
     @SerializedName("summary")

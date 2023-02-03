@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import androidx.appcompat.widget.AppCompatEditText
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.food_app.R
 import com.example.food_app.data.model.Recipe
@@ -26,6 +27,8 @@ class MainFragment : Fragment() {
     private val foodAdapter by lazy { RandomRecipesAdapter() }
     private val viewModel: RecipesViewModel by viewModel()
     private var tagsList = ArrayList<String>()
+    private var apiKey = Constants.API_KEY
+    private var number = "20"
 
 
     override fun onCreateView(
@@ -33,7 +36,7 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
-        viewModel.getRandomRecipes(Constants.API_KEY, "20", tagsList)
+        viewModel.getRandomRecipes(apiKey, number, tagsList)
         setUpObserver()
         return binding?.root
     }
@@ -88,7 +91,7 @@ class MainFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 tagsList.clear()
                 tagsList.add(query!!)
-                viewModel.getRandomRecipes(Constants.API_KEY, "20", tagsList)
+                viewModel.getRandomRecipes(apiKey, number, tagsList)
                 return true
             }
 
@@ -120,6 +123,13 @@ class MainFragment : Fragment() {
             layoutManager = GridLayoutManager(context, 2)
             adapter = foodAdapter
             foodAdapter.setList(model)
+            foodAdapter.addOnItemClickListener(object : OnItemClickListener {
+                override fun onClick(id: String) {
+                    val op = Bundle()
+                    op.putString("id", id)
+                    findNavController().navigate(R.id.detailsFragment, op)
+                }
+            })
         }
     }
 

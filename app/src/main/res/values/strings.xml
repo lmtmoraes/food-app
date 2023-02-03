@@ -6,6 +6,8 @@
     <string name="buscar">Buscar</string>
     <string name="error">Erro ao carregar</string>
     <string name="connection_error">Sem conexão</string>
+    <string name="food_details">Food details</string>
+    <string name="ingredients">Ingredients</string>
     <string-array name="tags">
         <item>main course</item>
         <item>side dish</item>

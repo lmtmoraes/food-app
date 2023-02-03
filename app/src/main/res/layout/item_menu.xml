@@ -14,26 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/food_card"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="5dp"
-            android:visibility="gone"
-            app:cardBackgroundColor="@color/light_grey"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/food_img"
@@ -45,10 +25,23 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/salad" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/no_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_no_image_red"
+            android:visibility="gone"
+            />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/food_name_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:ellipsize="marquee"
             android:fontFamily="@font/roboto_bold"
             android:marqueeRepeatLimit="marquee_forever"
@@ -57,7 +50,6 @@
             android:textAlignment="center"
             android:textColor="@color/red"
             android:textSize="16sp"
-            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@id/serving_img"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

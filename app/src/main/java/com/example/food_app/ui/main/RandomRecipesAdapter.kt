@@ -2,12 +2,14 @@ package com.example.food_app.ui.main
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.food_app.data.model.FoodResponse
+import com.example.food_app.R
 import com.example.food_app.data.model.Recipe
-import com.example.food_app.data.response.RandomRecipesResponse
 import com.example.food_app.databinding.ItemMenuBinding
+import com.example.food_app.utils.OnItemClickListener
 import com.squareup.picasso.Picasso
 
 class RandomRecipesAdapter() : RecyclerView.Adapter<RandomRecipesAdapter.ViewHolder>() {
@@ -23,6 +25,7 @@ class RandomRecipesAdapter() : RecyclerView.Adapter<RandomRecipesAdapter.ViewHol
             binding.likesTxt.text = item.aggregateLikes.toString() + " Likes"
             binding.timeTxt.text = item.preparationMinutes.toString() + " Minutes"
             binding.foodNameTxt.isSelected = true
+            binding.randomListCard.setOnClickListener { onItemClickListener?.onClick(item.id.toString()) }
         }
     }
 
@@ -33,7 +36,13 @@ class RandomRecipesAdapter() : RecyclerView.Adapter<RandomRecipesAdapter.ViewHol
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(mList[position])
-        Picasso.get().load(mList[position].image).into(binding.foodImg)
+        val imageUrl = mList[position].image
+        if(imageUrl != null){
+            Picasso.get().load(imageUrl).into(holder.itemView.findViewById<ImageView>(R.id.food_img))
+        } else {
+            holder.itemView.findViewById<ImageView>(R.id.food_img).visibility = View.GONE
+            holder.itemView.findViewById<ImageView>(R.id.no_img).visibility = View.VISIBLE
+        }
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -44,11 +53,20 @@ class RandomRecipesAdapter() : RecyclerView.Adapter<RandomRecipesAdapter.ViewHol
         return mList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setList(data: List<Recipe>){
         mList.clear()
         mList.addAll(data)
         notifyDataSetChanged()
     }
+
+    private var onItemClickListener: OnItemClickListener? = null
+
+    fun addOnItemClickListener(onItemClickListener: OnItemClickListener){
+        this.onItemClickListener = onItemClickListener
+    }
+
+
 
 
 }
