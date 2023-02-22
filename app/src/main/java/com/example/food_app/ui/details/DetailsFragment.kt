@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.food_app.R
 import com.example.food_app.data.model.ExtendedIngredient
+import com.example.food_app.data.response.InstructionsResponse
 import com.example.food_app.databinding.FragmentDetailsBinding
 import com.example.food_app.utils.Constants
 import com.example.food_app.utils.Failed
@@ -25,6 +26,7 @@ class DetailsFragment : Fragment() {
     private var id: Int? = null
     private val viewModel: DetailsViewModel by viewModel()
     private val ingredientsAdapter by lazy { IngredientsAdapter() }
+    private val instructionsAdapter by lazy { InstructionsAdapter(requireContext())}
     private var apiKey = Constants.API_KEY
 
     override fun onCreateView(
@@ -38,7 +40,27 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.getString("id")?.let { id = it.toInt() }
         viewModel.getRecipeDetails(id!!, apiKey)
+        viewModel.getInstructions(id!!, apiKey)
         setUpObserver()
+        setUpObserver2()
+    }
+
+    private fun setUpObserver2() {
+        lifecycleScope.launchWhenCreated {
+            viewModel.instructionsLiveData.collect{
+                when(it){
+                    is Loading -> {
+
+                    }
+                    is Failed -> {
+
+                    }
+                    is Success -> {
+                        initList2(it.data!!)
+                    }
+                }
+            }
+        }
     }
 
     private fun setUpObserver() {
@@ -90,6 +112,15 @@ class DetailsFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = ingredientsAdapter
             ingredientsAdapter.setList(model)
+        }
+    }
+
+    private fun initList2(model: List<InstructionsResponse>){
+        binding?.rvInstructions?.apply {
+            setHasFixedSize(true)
+            layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
+            adapter = instructionsAdapter
+            instructionsAdapter.setList(model)
         }
     }
 

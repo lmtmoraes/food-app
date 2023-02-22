@@ -1,6 +1,5 @@
 package com.example.food_app.ui.details
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -41,7 +40,6 @@ class IngredientsAdapter() : RecyclerView.Adapter<IngredientsAdapter.ViewHolder>
         return mList.size
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setList(data: List<ExtendedIngredient>){
         mList.clear()
         mList.addAll(data)

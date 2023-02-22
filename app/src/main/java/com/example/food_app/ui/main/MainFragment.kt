@@ -35,11 +35,16 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentMainBinding.inflate(inflater, container, false)
         viewModel.getRandomRecipes(apiKey, number, tagsList)
+        Toast.makeText(requireContext(), "onCreate called", Toast.LENGTH_LONG).show()
         setUpObserver()
         return binding?.root
     }
+
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         textListener(binding?.editSearch!!)
@@ -108,7 +113,6 @@ class MainFragment : Fragment() {
                 tagsList.clear()
                 tagsList.add(spinner.selectedItem.toString())
                 viewModel.getRandomRecipes(Constants.API_KEY, "20", tagsList)
-                setUpObserver()
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -132,6 +136,13 @@ class MainFragment : Fragment() {
             })
         }
     }
+
+    override fun onStop(){
+        super.onStop()
+        Toast.makeText(requireContext(), "onStop called", Toast.LENGTH_LONG).show()
+    }
+
+
 
 
 }
